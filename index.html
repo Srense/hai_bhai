@@ -1,0 +1,64 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask Ölçer</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    #app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h3 @click="changeText('heading')">{{ currentHeaderText }}</h3>
+    <button type="button" class="btn btn-success mr-2" :style="{ fontSize: yesButtonSize + 'rem' }" @click="yesButton">Yes</button>
+
+    <button type="button" class="btn btn-danger" @click="changeText('noButton')">No, I don't like</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        headerText: [
+          'Do you love me?',
+          'Are you in love with me?',
+          'Do you love me very much?',
+          'Do you not love me at all?',
+          'Not at all?',
+        ],
+        currentHeaderTextIndex: 0,
+        yesButtonSize: 1,
+      },
+      methods: {
+        changeText(button) {
+          if (button === 'noButton') {
+            this.currentHeaderTextIndex = (this.currentHeaderTextIndex + 1) % this.headerText.length;
+            this.yesButtonSize += 5;
+          }
+        },
+        yesButton() {
+          alert('bolna pada na  koi option hi nhin hai🤭');
+        },
+      },
+      computed: {
+        currentHeaderText() {
+          return this.headerText[this.currentHeaderTextIndex];
+        },
+      },
+    });
+  </script>
+</body>
+</html>
+```
+
+I replaced the Turkish comments and button text with English equivalents while keeping the logic and structure intact.
